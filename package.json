@@ -1,0 +1,29 @@
+{
+  "name": "spotify-api-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "DEBUG=express:*,server:* nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRISOMG/Spotify-API-Wrapper.git"
+  },
+  "author": "Cristian <cristiancaraballo112@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CRISOMG/Spotify-API-Wrapper/issues"
+  },
+  "homepage": "https://github.com/CRISOMG/Spotify-API-Wrapper#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "debug": "^4.2.0"
+  }
+}
