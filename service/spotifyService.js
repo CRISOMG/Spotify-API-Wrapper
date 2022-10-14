@@ -32,8 +32,9 @@ const getToken = async () => {
     config.access_token = data.access_token;
     debug_spotifyService_token('token setted');
   } catch (error) {
-    debug_spotifyService_errors(error.message);
-    throw new Error(error);
+    debug_spotifyService_errors(error);
+    console.log(typeof Error(error));
+    throw error;
   }
 };
 
@@ -43,7 +44,6 @@ const search = async (q, type = 'track') => {
 
     await getToken();
   }
-
   const search_request = {
     url: 'https://api.spotify.com/v1/search',
     headers: {
@@ -68,17 +68,16 @@ const search = async (q, type = 'track') => {
 
         await getToken();
         return await axios(search_request);
-      } catch (error) {
-        debug_spotifyService_errors(error.message);
-        throw new Error(error);
+      } catch (err) {
+        debug_spotifyService_errors(err.message);
+        throw err;
       }
-    } else {
-      throw new Error(error);
     }
+    throw error;
   }
 };
 
-const getTrack = async id => {
+const getTrack = async (id) => {
   if (!config.access_token) {
     debug_spotifyService_token('fetching token');
 
@@ -105,10 +104,10 @@ const getTrack = async id => {
         await getToken();
         return await axios(track_request);
       } catch (error) {
-        throw new Error(error);
+        throw error;
       }
     } else {
-      throw new Error(error);
+      throw error;
     }
   }
 };
